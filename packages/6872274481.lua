@@ -13769,6 +13769,42 @@ runFunction(function()
 	})
 end)
 
+
+runFunction(function()
+    local host = {}
+    local mode = {Value = 'Host'}
+    host = GuiLibrary.ObjectsThatCanBeSaved.UtilityWindow.Api.CreateOptionsButton({
+        Name = 'Host Panel',
+        HoverText = 'Bedwars fucked up',
+        Function = function(callback)
+            if callback then
+                task.spawn(function()
+                    if game.PlaceId ~= 6872265039 then
+                        if mode.Value == 'Host' then
+                            repeat task.wait()
+                                lplr:SetAttribute('CustomMatchRole', 'host')
+                            until not host
+                        elseif mode.Value == 'Cohost' then
+                            repeat task.wait()
+                                lplr:SetAttribute('CustomMatchRole', 'cohost')
+                            until not host
+                        end
+                    end
+                end)
+            end
+        end
+    })
+    mode = host.CreateDropdown({
+        Name = 'Mode',
+        List = {
+            'Host',
+            'Cohost'
+        },
+        Value = 'Host',
+        Function = function() end
+    })
+end)
+
 runFunction(function()
 	local ScytheDisabler = {}
 	ScytheDisabler = GuiLibrary.ObjectsThatCanBeSaved.BlatantWindow.Api.CreateOptionsButton({
